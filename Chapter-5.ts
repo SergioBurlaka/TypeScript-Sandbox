@@ -13,9 +13,9 @@ type A = string
 type B = string | number
 type C = 'Hello'
 
-let a: A = 'Hello'
-let b = a as B // less specific 
-let c = a as C // more specific 
+let a1: A = 'Hello'
+let b1 = a1 as B // less specific 
+let c1 = a1 as C // more specific 
 
 const world = <A>'some string'
 const helloWorld = <string>'some string'
