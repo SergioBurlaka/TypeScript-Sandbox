@@ -1,156 +1,106 @@
 ///////////////////////////
 
-// ts-node ./Chapter-7.ts
+// ts-node ./Chapter-8.ts
 
-type CoderType = {
+
+// type TransactionTypes = {
+//   readonly [key: string]: number
+// }
+
+type TransactionTypes = {
+  readonly [key: string]: number
+  Pizza: number,
+  Books: number,
+  Job: number,
+
+}
+
+//угода
+
+const todayTransactions: TransactionTypes = {
+  Pizza: -10,
+  Books: -5,
+  Job: 50,
+  // Dave: 'hey'
+}
+
+console.log(todayTransactions.Pizza)
+console.log(todayTransactions['Pizza'])
+
+
+const prop: string = 'Pizza'
+console.log(todayTransactions[prop])
+
+
+const todaysNet = (transactions: TransactionTypes): number => {
+
+  let total = 0
+  for (const item in transactions) {
+    total += transactions[item]
+  }
+
+  return total
+}
+
+console.log('todaysNet', todaysNet(todayTransactions))
+
+// todayTransactions.Pizza = 40
+
+
+console.log(todayTransactions['Dave'])
+
+//////////////////////
+
+type Student = {
+  // [key: string]: string | number | number[] | undefined,
   name: string,
-  music: string,
-  age: number,
-  language: string,
+  gpa: number,
+  classes?: number[]
 }
 
-
-class Coder {
-
-
-
-  constructor(
-    public readonly name: string,
-    public music: string,
-    private age: number,
-    protected language: string = 'TypeScript'
-  ) {
-
-    this.name = name
-    this.music = music
-    this.age = age
-    this.language = language
-
-  }
-
-  public getAge() {
-    return `Hello I am ${this.age} years old`
-  }
+const student: Student = {
+  name: 'Dough',
+  gpa: 3.5,
+  classes: [100, 200]
 }
 
-const ivan = new Coder('Ivan', 'bachata', 28)
-
-console.log('new coder', ivan)
-console.log('My age ', ivan.getAge())
+// console.log(student.test)
+// перебір пропсів обєкту та іх тип
 
 
-
-class WebDev extends Coder {
-
-  constructor(
-    public computer: string,
-    name: string,
-    music: string,
-    age: number,
-    language: string,
-  ) {
-
-    super(name, music, age, language)
-    this.computer = computer
-
-  }
-
-  public getLanguage() {
-    return this.language
-  }
-
+for (const key in student) {
+  console.log('student[key]', student[key as keyof Student])
 }
 
-const Vasil = new WebDev('HP', 'Vasil', 'pop', 29, 'HTML CSS')
-
-console.log('Vasil', Vasil)
-console.log('Vasil getLanguage', Vasil.getLanguage())
-console.log('Vasil getAge', Vasil.getAge())
+Object.keys(student).map(key => {
+  console.log(student[key as keyof typeof student])
+})
 
 
-interface Musitiabn {
-  name: string,
-  instrument: string,
-  play(action: string): string
+///////
+
+
+const logStudentKey = (student: Student, key: keyof Student): void => {
+  console.log(`Student ${key}: ${student[key]}`)
 }
 
-class Guitarist implements Musitiabn {
-  name: string
-  instrument: string
+logStudentKey(student, 'name')
 
-  constructor(name: string, instrument: string) {
-    this.name = name,
-      this.instrument = instrument
-  }
 
-  play(action: string) {
-    return `${this.name} ${action} the ${this.instrument}`
-  }
+//////////////////////
+
+
+type Streams = 'salary' | 'bonus' | 'sidehustle'
+
+type Incomes = Record<Streams, number | string>
+
+
+const monthlyIncomes: Incomes = {
+  salary: 500,
+  bonus: 100,
+  sidehustle: 250
 }
 
-
-const Page = new Guitarist('Jimmy', 'guitar')
-
-console.log('Page', Page)
-console.log('Page', Page.play('rock'))
-
-
-class Peeps {
-  static count: number = 0
-  static getCount(): number {
-    return Peeps.count
-  }
-
-  public id: number
-
-  constructor(public name: string) {
-    this.name = name
-    this.id = ++Peeps.count
-  }
-
-
+for (const revenue in monthlyIncomes) {
+  console.log(monthlyIncomes[revenue as keyof Incomes])
 }
-
-
-const John = new Peeps('John')
-const Steve = new Peeps('Steve')
-const Any = new Peeps('Any')
-
-console.log('Peeps.count', Peeps.count)
-console.log('Peeps.count', Peeps.getCount())
-
-console.log('John.id', John.id)
-console.log('Steve.id', Steve.id)
-
-
-class Bands {
-  private dataState: string[]
-
-  constructor() {
-    this.dataState = []
-  }
-
-  public get data(): string[] {
-    return this.dataState
-  }
-
-  public set data(value: string[]) {
-    if (Array.isArray(value) && value.every(el => typeof el === 'string')) {
-      this.dataState = value
-      return
-    } else {
-      throw new Error('Param is not array')
-    }
-  }
-}
-
-const MyBands = new Bands()
-
-MyBands.data = ['AC DC', 'Red HOT Chilly pappers', 'The Queen']
-
-console.log('MyBands.data', MyBands.data)
-
-
-MyBands.data = [...MyBands.data, 'Nirvana']
-
-console.log('MyBands.data', MyBands.data)

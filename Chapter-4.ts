@@ -119,3 +119,28 @@ function keepProcessing(): never {
 
 // keepProcessing()
 
+
+type A = string
+type B = string | number
+type C = 'Hello'
+
+let a1: A = 'Hello'
+let b1 = a1 as B // less specific 
+let c1 = a1 as C // more specific 
+
+const world = <A>'some string'
+const helloWorld = <string>'some string'
+
+console.log('helloWorld', helloWorld)
+
+
+const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): string | number => {
+  if (c === 'add') return a + b
+  return '' + a + b
+}
+
+// проблема у тому що в такому випадку ts не бачить проблеми але насправді  в цьому випадку він повертає непрпавильний тип бо насправді тут число
+const sum: string = addOrConcat(4, 9, 'add') as string
+
+const resConcat = addOrConcat(4, 9, 'concat')
+

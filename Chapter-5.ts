@@ -8,30 +8,14 @@
 
 ///
 
+// команда для створення index.js щоб запустити через html документ  
 
-type A = string
-type B = string | number
-type C = 'Hello'
+//   <script src="Chapter-6.js"></script>
 
-let a1: A = 'Hello'
-let b1 = a1 as B // less specific 
-let c1 = a1 as C // more specific 
-
-const world = <A>'some string'
-const helloWorld = <string>'some string'
-
-console.log('helloWorld', helloWorld)
+///////////////////
 
 
-const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): string | number => {
-  if (c === 'add') return a + b
-  return '' + a + b
-}
 
-// проблема у тому що в такому випадку ts не бачить проблеми але насправді  в цьому випадку він повертає непрпавильний тип бо насправді тут число
-const sum: string = addOrConcat(4, 9, 'add') as string
-
-const resConcat = addOrConcat(4, 9, 'concat')
 
 
 
@@ -47,4 +31,21 @@ myImage.src
 nextImg.src
 
 
+
+const year = document.getElementById('year') as HTMLSpanElement
+
+const thisYear: string = new Date().getFullYear().toString()
+
+if (year) {
+    year.setAttribute('datetime', thisYear)
+    year.textContent = thisYear
+    console.log(' thisYear 1', thisYear)
+}
+
+const changeColor = (newColor: string): void => {
+    const elem: HTMLElement | null = document.getElementById("para");
+    if (elem) {
+        elem.style.color = newColor;
+    }
+}
 
