@@ -1,6 +1,6 @@
 ///////////////////////////
 
-// ts-node ./Chapter-8.ts
+// ts-node ./Chapter-7.ts
 
 
 // type TransactionTypes = {
