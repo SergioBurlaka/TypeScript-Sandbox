@@ -101,7 +101,7 @@ enum Languages {
   sql = 'SQL'
 }
 
-const TypeOfEnum = typeof Languages
+type TypeOfEnum = keyof typeof Languages
 
 const languagesCollection: Languages[] = []
 const languagesCollection_2: Languages[] = [Languages.ts, Languages.sql]
