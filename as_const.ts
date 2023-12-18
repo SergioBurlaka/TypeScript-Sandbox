@@ -4,13 +4,19 @@ const routes = {
   home: "/",
   admin: "/admin",
   users: "/users",
-} as const
+} as const;
+
+type RoutesKyes = keyof typeof routes
+
+type RoutesType = (typeof routes)[keyof typeof routes];
+
+type HomeAdminType = (typeof routes)['home' | 'admin'];
+
+const goToRoute = <T>(routes: T) => {};
 
 // const goToRoute = (routes: "/" | "/admin" | "/users") => {};
 
-type RoutesType = typeof routes []
+goToRoute(routes.admin);
 
-
-const goToRoute = (routes: RoutesType) => {};
-
-goToRoute()
+goToRoute<HomeAdminType>('/admin')
+goToRoute<HomeAdminType>(routes.home)
