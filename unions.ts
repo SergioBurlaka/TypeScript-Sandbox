@@ -10,7 +10,7 @@ type StatesEnumKyes = keyof typeof StatesEnum;
 
 type routes_2 = (typeof StatesEnum)[keyof typeof StatesEnum];
 
-type SuccessType = (typeof StatesEnum)["success"];
+// type SuccessType = (typeof StatesEnum)["success"];
 
 type loading = StatesEnum.loading;
 type error = StatesEnum.error;
