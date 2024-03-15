@@ -1,5 +1,5 @@
-відео з уроком
-https://www.youtube.com/watch?v=sjejBH-8SIc&ab_channel=AleksandrSugak
+// відео з уроком
+// https://www.youtube.com/watch?v=sjejBH-8SIc&ab_channel=AleksandrSugak
 
 const user_1 = {
   name: 'sergii',

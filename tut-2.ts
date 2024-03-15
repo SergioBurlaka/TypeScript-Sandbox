@@ -61,7 +61,7 @@ const persone: Persone = { name: 'Name', age: 34, }
 
 type FlexibleObject = {
 	[key: string]: unknown
-} & Name & Age
+} & Persone
 
 const superPersone: FlexibleObject = { name: ' some Name', age: 78, old: true }
 
