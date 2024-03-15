@@ -3,6 +3,16 @@
 
 // https://habr.com/ru/articles/664960/
 
+// tuple // кортеж
+
+const tupleArr: [string, number, boolean] = ['AC DC', 15, true]
+
+
+type TupleType = [string, number, boolean]
+
+
+const tupleArr_2: TupleType = ['jhon', 43, true]
+
 
 
 let someArr_1: (string | number | boolean)[] = ['Денис', 1, true, 89, 'hello'];
@@ -29,17 +39,18 @@ const someArr_3 = ['Sergii', true, 38]
 
 const myCortege: [string, number, boolean] = ['Sergii', 25, false]
 
+//  Але в ций кортеж можливо додати ще один елемент, а це не добре
+
 myCortege.push(7)
 
 console.log('myCortege', myCortege)
 
 const myCortege_2: [string, number, boolean] = ['Sergii', 25, false];
 
-myCortege_2[2] = true
+// Type 'number' is not assignable to type 'boolean'
+// myCortege_2[2] = 1
 
-
-// Property 'push' does not exist on type 'readonly [string, number, boolean]'
-// myCortege_2.push(7)
+myCortege_2.push(7)
 
 console.log('myCortege_2', myCortege_2)
 
