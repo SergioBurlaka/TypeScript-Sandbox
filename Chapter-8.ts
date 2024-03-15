@@ -3,155 +3,138 @@
 // type ObjectKeyGeneric<>
 
 const drammer = {
-  name: 'Steve',
+  name: "Steve",
   age: 28,
-  drammer: true
-}
+  drammer: true,
+};
 
 const product = {
-  label: 'Coca cola',
-  price: 7.95
-}
-
+  label: "Coca cola",
+  price: 7.95,
+};
 
 const logObjectKey = <T, K extends keyof T>(obj: T, key: K) => {
-  return obj[key]
-}
+  return obj[key];
+};
 
-console.log('drammer ', logObjectKey(drammer, 'drammer')
-)
-console.log('product ', logObjectKey(product, 'price')
-)
-
+console.log("drammer ", logObjectKey(drammer, "drammer"));
+console.log("product ", logObjectKey(product, "price"));
 
 const iterateObject = <T>(obj: T) => {
-
   for (const key in obj) {
-    console.log(obj[key as keyof T])
+    console.log(obj[key as keyof T]);
   }
+};
 
-}
+iterateObject(drammer);
 
+type SuperType<T> = T;
 
-iterateObject(drammer)
+type MyStringType = string;
+type MyNumberType = number;
+type MyBooleanType = boolean;
 
-type SuperType<T> = T
+const superEcho = <T>(arg: T): T => arg;
 
-type MyStringType = string
-type MyNumberType = number
-type MyBooleanType = boolean
+console.log("type  string", superEcho("Hello"));
+console.log("type boolean", superEcho(true));
 
-
-const superEcho = <T>(arg: T): T => arg
-
-
-console.log('type  string', superEcho('Hello'))
-console.log('type boolean', superEcho(true))
-
-// learning english "!" exclamation mark 
+// learning english "!" exclamation mark
 
 type HasId = {
-  id: number
-}
+  id: number;
+};
 
 const processUser = <T extends HasId>(user: T) => {
-  return user.id
-}
-
+  return user.id;
+};
 
 const chekHasId = <T extends HasId>(user: T): T => {
-  return user
-}
-
+  return user;
+};
 
 // Argument of type '{ name: string; age: number; drammer: boolean; }' is not assignable to parameter of type 'HasId'.
-//   Property 'id' is missing in type '{ name: string; age: number; drammer: boolean; }' but required in type 'HasId'. 
-
+//   Property 'id' is missing in type '{ name: string; age: number; drammer: boolean; }' but required in type 'HasId'.
 
 // console.log(chekHasId(drammer))
 
-console.log(chekHasId({ id: 5, ...drammer }))
+console.log(chekHasId({ id: 5, ...drammer }));
 
-
-const getUsersProperty = <T extends HasId, K extends keyof T>(users: T[], key: K): T[K][] => {
-  return users.map(user => user[key])
-}
-
+const getUsersProperty = <T extends HasId, K extends keyof T>(
+  users: T[],
+  key: K
+): T[K][] => {
+  return users.map((user) => user[key]);
+};
 
 const users = [
   {
-    name: 'Ivan',
+    name: "Ivan",
     id: 6,
-    email: 'evan6@email.com',
-    company: 'piece of shit'
+    email: "evan6@email.com",
+    company: "piece of shit",
   },
   {
-    name: 'Vasil',
+    name: "Vasil",
     id: 777,
-    email: 'Vasil@email.com',
-    company: 'nice company'
-  }
-]
+    email: "Vasil@email.com",
+    company: "nice company",
+  },
+];
 
-console.log(getUsersProperty(users, 'company'))
-
-
+console.log(getUsersProperty(users, "company"));
 
 class StateObject<T> {
-  private data: T
+  private data: T;
   constructor(value: T) {
-    this.data = value
+    this.data = value;
   }
 
   get state(): T {
-    return this.data
+    return this.data;
   }
 
   set state(value: T) {
-    this.data = value
+    this.data = value;
   }
 }
 
+const store = new StateObject("Jhon");
 
-const store = new StateObject('Jhon')
+console.log(store.state);
 
-
-console.log(store.state)
-
-store.state = 'Dave'
+store.state = "Dave";
 
 // Type 'number' is not assignable to type 'string'
 
 // store.state = 12
 
-type StorageType_1 = string | boolean | number
+type StorageType_1 = string | boolean | number;
 
+const myState = new StateObject<StorageType_1[]>([123, "Jhon Wick", true]);
 
-const myState = new StateObject<StorageType_1[]>([123, 'Jhon Wick', true])
-
-console.log(' myState', myState)
-console.log(' myState.state', myState.state)
+console.log(" myState", myState);
+console.log(" myState.state", myState.state);
 
 // Comparing Manual Transmission with Automatic
 
 type CarType = {
-  label: string,
-  gear: 'manual' | 'automatic',
-  price: number
-}
-
+  label: string;
+  gear: "manual" | "automatic";
+  price: number;
+};
 
 const myGarage = new StateObject<CarType[]>([
   {
-    label: 'Dodge',
-    gear: 'automatic',
-    price: 4500
+    label: "Dodge",
+    gear: "automatic",
+    price: 4500,
   },
   {
-    label: 'Frod',
-    gear: 'manual',
-    price: 3500
-  }
-])
+    label: "Frod",
+    gear: "manual",
+    price: 3500,
+  },
+]);
 
-console.log(' myGarage.state', myGarage.state)
+console.log(" myGarage.state", myGarage.state);
