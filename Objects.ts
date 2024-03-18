@@ -26,3 +26,5 @@ type TypeOfPersone = typeof persone_2;
 type NextType = typeof persone_2;
 
 console.log("persone_2", persone_2);
+
+
