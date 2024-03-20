@@ -1,4 +1,4 @@
-// ts-node ./Enum-1.ts
+// ts-node ./function.ts
 
 // function
 
@@ -41,3 +41,15 @@ console.log(greatingGutarist(jamesHendrix));
 // alt + z  - робить строку в межах екрану
 
 console.log(greatingGutarist(somePersone));
+
+const adding = (a: string | number, b: string | number): string | number =>
+  +a + +b;
+
+console.log(`adding('a', 'b')`, adding("a", "b")); // NaN   
+console.log(`NaN + NaN`, NaN + NaN);
+
+console.log(`typeof NaN`, typeof NaN); // number
+
+console.log(` Number.isNaN(+1)`,  Number.isNaN(+1));
+
+

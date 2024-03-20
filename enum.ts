@@ -1,4 +1,4 @@
-// ts-node ./Enum-1.ts
+// ts-node ./enum.ts
 
 // Enums
 
