@@ -41,3 +41,6 @@ const stringToNumber_5 = <T extends string>(str: IsNumberString_2<T>) =>
 
 stringToNumber_5("123");  // Returns: number
 stringToNumber_5("abc");  // Argument of type '"abc"' is not assignable to parameter of type 'IsNumberString<string>'
+
+
+// Прооблема була розв'язана у файлф isNumber_from_chat_gpt_3.ts
