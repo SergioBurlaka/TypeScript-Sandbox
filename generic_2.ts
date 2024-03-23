@@ -20,6 +20,6 @@ type TypeOfObj = typeof newObj;
 
 const getLength = <T extends { length: number }>(str: T) => str.length;
 
-const res = getLength("Hello");
+const res_4 = getLength("Hello");
 
-console.log("res", res);
+console.log("res_4", res_4);

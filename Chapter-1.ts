@@ -9,7 +9,7 @@ const a = 12;
 const b = "6";
 const c = 3;
 
-const adding = (arg1: number, arg2: number) => arg1 + arg2;
+const adding_1 = (arg1: number, arg2: number) => arg1 + arg2;
 
 const regEx: RegExp = /\w+/g;
 

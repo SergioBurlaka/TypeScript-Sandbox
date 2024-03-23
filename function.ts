@@ -110,4 +110,9 @@ type ObjectType_2 = MyType_2<string | number>;
 
 const persone_1: ObjectType_2 = { name: "Vasyl" };
 
-const getLength_2 = <T extends string | []>(value: T) => value.length;
+const getLength_3 = <T extends string | []>(value: T) => value.length;
+
+
+type TypeFromFn = ReturnType< typeof getLength_3>
+
+const isNaN_2 = (str: string) => Number.isNaN(+str)
