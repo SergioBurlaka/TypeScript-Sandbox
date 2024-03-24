@@ -31,7 +31,7 @@ iterateObject(drammer);
 type SuperType<T> = T;
 
 type MyStringType = string;
-type MyNumberType = number;
+type MyNumberType_5 = number;
 type MyBooleanType = boolean;
 
 const superEcho = <T>(arg: T): T => arg;
