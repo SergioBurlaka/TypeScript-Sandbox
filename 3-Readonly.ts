@@ -6,6 +6,12 @@
 
 type MyReadonly<T> = Readonly<T>;
 
+// NoUtility
+
+type MyReadonlyNoUtility<T> = {
+  readonly [K in keyof T]: T[K]
+}
+
 type Foo_3 = {
   // readonly a: string  // its alternative
   a: string;

@@ -4,17 +4,25 @@
 
 // 4. implement Record<K, V>
 
-type Key = 'a' | 'b' | 'c'
+type Key = "a" | "b" | "c";
 
 const a_4: Record<Key, string> = {
-  a: 'BFE.dev',
-  b: 'BFE.dev',
-  c: 'BFE.dev'
-}
-a_4.a = 'bigfrontend.dev' // OK
-a_4.b = 123 // Error
-a_4.d = 'BFE.dev' // Error
+  a: "BFE.dev",
+  b: "BFE.dev",
+  c: "BFE.dev",
+};
 
-type MyRecord<K extends number | string | symbol, V > = Record<K, V>
+// NoUtility
 
-type Foo_4 = MyRecord<{a: string}, string> // Error
+type MyRecordNoUtility<K extends string | number | symbol, V> = {
+  [P in K]: V;
+};
+
+
+a_4.a = "bigfrontend.dev"; // OK
+a_4.b = 123; // Error
+a_4.d = "BFE.dev"; // Error
+
+type MyRecord<K extends number | string | symbol, V> = Record<K, V>;
+
+type Foo_4 = MyRecord<{ a: string }, string>; // Error

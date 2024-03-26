@@ -15,6 +15,12 @@ type Foo_2 = {
 
 type MyRequired<T> = Required<T>;
 
+// NoUtility
+
+type MyRequiredNoUtility<T> = {
+  [K in keyof T]-?: T[K];
+};
+
 const a_2: MyRequired<Foo_2> = {};
 // Error
 
